@@ -1,0 +1,21 @@
+name: "Earthly Github Action"
+description: "A GitHub Action to run Earthly targets"
+inputs:
+  target:
+    description: "An Earthly target to run"
+    required: true
+  push:
+    description: "Specifies whether to push cache/image artifacts to the registry. Use when building the main branch"
+    required: true
+    default: "false"
+  buildArgs:
+    description: "Build arguments in the form of { name: \"value\" }"
+    required: false
+    default: "{}"
+  secrets:
+    description: "Secrets in the form of { name: \"value reference\" }"
+    required: false
+    default: "{}"
+runs:
+  using: 'node16'
+  main: 'earthly-action/dist/index.js'
